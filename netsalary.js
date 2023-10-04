@@ -14,9 +14,10 @@ function calculateDeductions(basicSalary, benefits) {
   
     const nssfRate = 0.06;
   
-//gross
+//gross salary
     const grossSalary = basicSalary + benefits;
-//payee
+    
+//paye
     let paye = 0;
   
     if (grossSalary <= 24000) {
@@ -26,7 +27,8 @@ function calculateDeductions(basicSalary, benefits) {
     } else {
       paye = 2400 + 1649.95 + (grossSalary - 32333) * taxRates.high;
     }
-  
+
+  //nhif deductions
     let nhifDeduction = 0;
   
     if (grossSalary <= 5999) {
@@ -36,9 +38,10 @@ function calculateDeductions(basicSalary, benefits) {
     } else {
       nhifDeduction = nhifRates.high;
     }
-  
+  //nssf deductions
     const nssfDeduction = grossSalary * nssfRate;
-  
+
+  // return calculated values
     return {
       grossSalary,
       paye,
